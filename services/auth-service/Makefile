@@ -2,7 +2,7 @@
 
 # Development server
 dev:
-	uvicorn src.auth_service.driver_adapters.api.main:app --reload
+	uv run uvicorn src.auth_service.driver_adapters.api.main:app --reload
 
 # Testing
 test:
