@@ -1,0 +1,45 @@
+[project]
+name = "auth-service"
+version = "0.1.0"
+description = "Microservice for authentication"
+authors = [{ name = "Ahonakpon Guy Gbaguidi", email = "ag.gbaguidi@sustainable.bj" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "httpx",       # for API tests
+    "coverage",
+    "python-dotenv",
+    "ruff",        # linter
+    "mypy",        # static type checker
+    "black",       # formatter
+    "isort",       # import sorter
+]
+
+[tool.pytest.ini_options]
+addopts = "-s -vv --cov=src --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
